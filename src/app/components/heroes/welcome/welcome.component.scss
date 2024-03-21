@@ -1,0 +1,11 @@
+.c-heroes {
+  &__filter {
+    margin-bottom: 24px;
+    display: flex;
+    width: 100%;
+  }
+  &__input {
+    width: 140vh;
+    padding-right: 20px;
+  }
+}

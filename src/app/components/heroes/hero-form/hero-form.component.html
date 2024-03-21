@@ -1,0 +1,97 @@
+<section nz-row>
+  <div nz-col nzSpan="12">
+    @if (nzModalData.heroe) {
+      <img
+      nz-image
+      width="200px"
+      height="300px"
+      [nzSrc]="nzModalData.heroe | heroImage"
+      alt=""
+    />
+    } @else {
+      <img
+      nz-image
+      width="200px"
+      height="200px"
+      nzSrc="assets/heroes/marvel-logo.jpg"
+      alt=""
+    />
+    }
+
+  </div>
+  <div nz-col nzSpan="12">
+    <form nz-form [formGroup]="form">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input ID!">
+          <nz-input-group>
+            <input formControlName="id" nz-input placeholder="ID Hero" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input name!">
+          <nz-input-group>
+            <input
+              formControlName="superhero"
+              nz-input
+              placeholder="Name Hero"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input Publisher!">
+          <nz-input-group>
+            <input
+              formControlName="publisher"
+              nz-input
+              placeholder="publisher"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input Alter Ego!">
+          <nz-input-group>
+            <input
+              formControlName="alter_ego"
+              nz-input
+              placeholder="alter_ego"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input First Apparence!">
+          <nz-input-group>
+            <input
+              formControlName="first_appearance"
+              nz-input
+              placeholder="first_appearance"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</section>
+
+  <div class="c-hero-form">
+    <div class="c-hero-form__buttons">
+      <button nz-button nzType="default" (click)="cancel()">
+        {{ "close" | titlecase }}
+      </button>
+    </div>
+    <div class="c-hero-form__buttons">
+      @if (nzModalData.heroe) {
+      <button nz-button nzType="primary" (click)="update()">
+        {{ "update" | titlecase }}
+      </button>
+      } @else {
+      <button nz-button nzType="primary" (click)="create()">
+        {{ "save" | titlecase }}
+      </button>
+      }
+    </div>
+  </div>
+

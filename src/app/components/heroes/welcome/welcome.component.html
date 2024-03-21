@@ -1,0 +1,52 @@
+<section class="c-heroes">
+  <section class="c-heroes__filter">
+    <div class="c-heroes__input">
+      <heroes-search-page></heroes-search-page>
+    </div>
+    <div>
+      <button nz-button nzType="primary" (click)="openModal()">
+        Create Hero
+      </button>
+    </div>
+  </section>
+  <section>
+    <nz-table
+      #basicTable
+      [nzData]="(heroes$ | async) || []"
+      [nzPageSize]="6"
+      [nzPaginationType]="'small'"
+      [nzScroll]="{ x: '1000px', y: '600px' }"
+      [nzLoading]="loading$ | async"
+    >
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Publisher</th>
+          <th>First Appearance</th>
+          <th nzAlign="center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{ data.superhero | titlecase }}</td>
+          <td>{{ data.publisher }}</td>
+          <td>{{ data.first_appearance }}</td>
+          <td nzAlign="center">
+            <a (click)="openModal(data)">Edit</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a
+              nz-popconfirm
+              nzPopconfirmTitle="¿Seguro desea eliminar?"
+              (nzOnConfirm)="remove(data.id)"
+              (nzOnCancel)="cancel()"
+              nzPopconfirmPlacement="top"
+              nzOkText="Si"
+              nzCancelText="No"
+              >Delete</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </section>
+</section>

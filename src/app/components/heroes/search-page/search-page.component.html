@@ -1,0 +1,17 @@
+<div>
+  <nz-input-group [nzSuffix]="suffixIconSearch">
+    <input
+      type="text"
+      nz-input
+      placeholder="Search Hero"
+      nz-input
+      [(ngModel)]="search"
+      (ngModelChange)="searchText$.next($event)"
+    />
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <span nz-icon nzType="search"></span>
+  </ng-template>
+</div>
+
+
