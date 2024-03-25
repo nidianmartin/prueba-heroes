@@ -7,12 +7,11 @@ import { Hero } from '../components/heroes/state';
 })
 export class HeroImagePipe implements PipeTransform {
   transform(hero: Hero): string {
-    if (!hero.id || !hero.alt_img) {
+    if (hero.no_image) {
       return 'assets/heroes/no-image.png';
+    } else {
+      return `assets/heroes/${hero.id}.jpg`;
     }
-    if (hero.alt_img) {
-      return hero.alt_img; //https://google.com/flash.png
-    }
-    return `assets/heroes/${hero.id}.jpg`;
+   
   }
 }

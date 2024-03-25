@@ -9,6 +9,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzImageModule } from 'ng-zorro-antd/image';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { NzImageModule } from 'ng-zorro-antd/image';
     NzInputModule,
     NzMessageModule,
     NzAutocompleteModule,
-    NzImageModule
+    NzImageModule,
+    NzCheckboxModule
   ],
 })
 export class antDesing {}

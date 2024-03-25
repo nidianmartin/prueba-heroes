@@ -19,15 +19,14 @@ interface IModalData {
 }
 
 @Component({
-    selector: 'app-hero-form',
-    standalone: true,
-    providers: [HeroesService, HeroesQuery, HeroesStore],
-    templateUrl: './hero-form.component.html',
-    styleUrl: './hero-form.component.scss',
-    imports: [CommonModule, ReactiveFormsModule, antDesing, HeroImagePipe]
+  selector: 'app-hero-form',
+  standalone: true,
+  providers: [HeroesService, HeroesQuery, HeroesStore],
+  templateUrl: './hero-form.component.html',
+  styleUrl: './hero-form.component.scss',
+  imports: [CommonModule, ReactiveFormsModule, antDesing, HeroImagePipe],
 })
 export class HeroFormComponent {
-
   public form!: FormGroup;
 
   public heroes$: Observable<Hero[]> = this.query.heroes$;
@@ -42,17 +41,20 @@ export class HeroFormComponent {
     private message: NzMessageService
   ) {
     this.form = this.formBuilder.group({
-      id: new FormControl(null, [Validators.required]),
+      id: new FormControl(null),
       superhero: new FormControl(null, [Validators.required]),
       publisher: new FormControl(null),
       alter_ego: new FormControl(null, [Validators.required]),
       first_appearance: new FormControl(null),
-      characters: new FormControl(null)
+      characters: new FormControl(null),
+      no_image: new FormControl(null),
     });
 
     if (this.nzModalData.heroe) {
       this.form.patchValue(this.nzModalData.heroe);
     }
+
+    this.form.get('id')?.disable();
   }
 
   ngOnInit() {}
@@ -67,10 +69,13 @@ export class HeroFormComponent {
   }
 
   create() {
+    let idRandom = crypto.randomUUID;
+    this.form.get('id')?.patchValue(idRandom);
+
     if (this.form.valid) {
       this.service.createHero(this.form.value).subscribe({
         next: () => {
-          this.message.success('Successfully update hero');
+          this.message.success('Successfully create hero');
           this.modal.destroy();
         },
         error: () => {

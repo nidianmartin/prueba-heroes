@@ -22,9 +22,9 @@
   <div nz-col nzSpan="12">
     <form nz-form [formGroup]="form">
       <nz-form-item>
-        <nz-form-control nzErrorTip="Please input ID!">
+        <nz-form-control>
           <nz-input-group>
-            <input formControlName="id" nz-input placeholder="ID Hero" />
+            <input formControlName="id" nz-input placeholder="ID Hero"/>
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
@@ -69,6 +69,13 @@
               nz-input
               placeholder="first_appearance"
             />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group>
+            <label nz-checkbox formControlName="no_image">¿Without image?</label>
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>

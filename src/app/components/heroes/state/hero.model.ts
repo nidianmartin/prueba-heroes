@@ -1,9 +1,10 @@
 export interface Hero {
-  id: number,
+  id: string,
   superhero: string,
   publisher: string,
   alter_ego: string,
   first_appearance: string,
   characters: string;
   alt_img: any;
+  no_image?: boolean;
 }
