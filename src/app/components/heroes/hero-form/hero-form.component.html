@@ -1,11 +1,10 @@
-<section nz-row>
-  <div nz-col nzSpan="12">
-    @if (nzModalData.heroe) {
+<section>
+  <div>
+    @if (hero) {
       <img
       nz-image
       width="200px"
       height="300px"
-      [nzSrc]="nzModalData.heroe | heroImage"
       alt=""
     />
     } @else {
@@ -19,83 +18,24 @@
     }
 
   </div>
-  <div nz-col nzSpan="12">
-    <form nz-form [formGroup]="form">
-      <nz-form-item>
-        <nz-form-control>
-          <nz-input-group>
-            <input formControlName="id" nz-input placeholder="ID Hero"/>
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input name!">
-          <nz-input-group>
-            <input
-              formControlName="superhero"
-              nz-input
-              placeholder="Name Hero"
-            />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input Publisher!">
-          <nz-input-group>
-            <input
-              formControlName="publisher"
-              nz-input
-              placeholder="publisher"
-            />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input Alter Ego!">
-          <nz-input-group>
-            <input
-              formControlName="alter_ego"
-              nz-input
-              placeholder="alter_ego"
-            />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input First Apparence!">
-          <nz-input-group>
-            <input
-              formControlName="first_appearance"
-              nz-input
-              placeholder="first_appearance"
-            />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control>
-          <nz-input-group>
-            <label nz-checkbox formControlName="no_image">¿Without image?</label>
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-    </form>
+  <div>
+
   </div>
 </section>
 
   <div class="c-hero-form">
     <div class="c-hero-form__buttons">
-      <button nz-button nzType="default" (click)="cancel()">
+      <button (click)="cancel()">
         {{ "close" | titlecase }}
       </button>
     </div>
     <div class="c-hero-form__buttons">
-      @if (nzModalData.heroe) {
-      <button nz-button nzType="primary" (click)="update()">
+      @if (hero) {
+      <button (click)="update()">
         {{ "update" | titlecase }}
       </button>
       } @else {
-      <button nz-button nzType="primary" (click)="create()">
+      <button (click)="create()">
         {{ "save" | titlecase }}
       </button>
       }
