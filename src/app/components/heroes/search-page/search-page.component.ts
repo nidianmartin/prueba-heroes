@@ -7,11 +7,12 @@ import {
 } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { HeroesService } from '../service/heroes.service';
+import { Material } from '../../../../shared/material/material.module';
 
 @Component({
   selector: 'heroes-search-page',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Material],
   templateUrl: './search-page.component.html',
   styles: ``,
 })
@@ -23,7 +24,9 @@ export class SearchPageComponent {
 
   ngOnInit(): void {
     this.searchText$.pipe(debounceTime(300), distinctUntilChanged()).subscribe((name: string) => {
-       this.service.filterHeroesByName(name).subscribe();
+       this.service.filterHeroesByName(name).subscribe((resp) => {
+        this.service.updateResults(resp);
+       });
     });
   }
 }

@@ -1,6 +1,6 @@
 # PruebaHeroes
 
-Proyecto generado en Angular 17, utilizando librerias como NG ANT https://ng.ant.design/docs/introduce/en para la maquetación y Akita https://opensource.salesforce.com/akita/docs/store para el control de estados. 
+Proyecto generado en Angular 17
 
 ## Run backend
 

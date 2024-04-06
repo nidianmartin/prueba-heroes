@@ -1,44 +1,62 @@
-<section>
-  <div>
-    @if (hero) {
+<section class="c-hero-form">
+  <div class="c-hero-form__img">
+    @if (heroData.hero) {
       <img
-      nz-image
+      [src]="heroData.hero | heroImage"
       width="200px"
       height="300px"
-      alt=""
+      alt="superhero"
     />
     } @else {
       <img
-      nz-image
       width="200px"
       height="200px"
-      nzSrc="assets/heroes/marvel-logo.jpg"
+      src="assets/angular-logo.png"
       alt=""
     />
     }
 
   </div>
-  <div>
+  <div class="c-hero-form__inputs">
+    <form [formGroup]="form">
 
+        <mat-form-field appearance="outline">
+          <mat-label>Superhero</mat-label>
+          <input matInput formControlName="superhero" required>
+          @if (form.hasError('superhero') && !form.hasError('required')) {
+            <mat-error>Please enter a superhero</mat-error>
+          }
+        </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Publisher</mat-label>
+        <input matInput formControlName="publisher" >
+      </mat-form-field>
+      <mat-form-field appearance="outline" required>
+        <mat-label>Alter ego</mat-label>
+        <input matInput formControlName="alter_ego" >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>First Appearance</mat-label>
+        <input matInput formControlName="first_appearance" >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Characters</mat-label>
+        <input matInput formControlName="characters" >
+      </mat-form-field>
+      <mat-checkbox formControlName="no_image">Without loading image?</mat-checkbox>
+    </form>
   </div>
 </section>
 
-  <div class="c-hero-form">
-    <div class="c-hero-form__buttons">
-      <button (click)="cancel()">
-        {{ "close" | titlecase }}
-      </button>
-    </div>
-    <div class="c-hero-form__buttons">
-      @if (hero) {
-      <button (click)="update()">
-        {{ "update" | titlecase }}
-      </button>
-      } @else {
-      <button (click)="create()">
-        {{ "save" | titlecase }}
-      </button>
-      }
-    </div>
-  </div>
+<div class="c-hero-form__buttons">
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>{{ "close" | titlecase }}</button>
+    @if (heroData.hero) {
+      <button mat-button cdkFocusInitial (click)="update()">{{ "update" | titlecase }}</button>
+    } @else {
+      <button mat-button cdkFocusInitial (click)="create()">{{ "save" | titlecase }}</button>
+    }
+  </mat-dialog-actions>
+</div>
 

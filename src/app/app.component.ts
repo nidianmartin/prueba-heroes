@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { HttpClientModule } from '@angular/common/http';
+import { WelcomeComponent } from './components/heroes/welcome/welcome.component';
+import { Material } from '../shared/material/material.module';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +11,13 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     RouterOutlet,
-    NzIconModule,
-    NzLayoutModule,
-    NzMenuModule,
     HttpClientModule,
+    WelcomeComponent,
+    Material
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  isCollapsed = false;
+
 }
