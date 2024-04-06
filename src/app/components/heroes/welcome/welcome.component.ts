@@ -98,6 +98,8 @@ export class WelcomeComponent implements OnInit {
         });
         this.snackBar.open('Eliminated hero', 'Close', {
           duration: 2000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
         });
       }
     });
